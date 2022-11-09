@@ -1,0 +1,80 @@
+<!--Овој сервлет треба да ја прикажете страната за избор на големина на балон-->
+<!--Во фолдерот src/main/resources/templates додадете фајл selectBalloonSize.html.-->
+<!--Во страницата треба да има форма од која ќе се избере големината на балонот.-->
+<!--Типот на елементите во формата е radio.-->
+<!--При клик на Submit копчето од оваа форма треба да се повика сервлетот на адресата /BalloonOrder.-->
+<!--Прилагодете го фајлот selectBalloonSize.html за изгледот на оваа страница.-->
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Balloon Order page - Balloon Size</title>
+    <style type = "text/css">
+        body {
+            width: 800px;
+            margin: auto;
+        }
+        table {
+            width:100%;
+        }
+        table, td, th {
+            border: 1px solid black;
+            padding:3px 2px;
+        }
+        section {
+            float: left;
+            margin: 0 1.5%;
+            width: 63%;
+        }
+        aside {
+            float: right;
+            margin: 0 1.5%;
+            width: 30%;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <h1>Balloon Order page - Select Balloon Size </h1>
+</header>
+<section>
+    <form th:action="@{/selectBalloon}", method="POST">
+        <h2>Choose balloon size:</h2>
+        <!--/*@thymesVar id="sizes" type="mk.ukim.finki.wp.lab.model.Balloon"*/-->
+        <div th:each="size: ${sizes}"><!--/*@thymesVar id="size" type="mk.ukim.finki.wp.lab.model.Balloon"*/-->
+            <input type="radio" name="size"  th:value="${size.getName()}"  />
+            <th:span th:text="${size.getDescription()}"></th:span></div>
+
+        <br/>
+        <input type="submit" value="Submit">
+    </form>
+<!--    <form th:action="@{/BalloonOrder}", method="POST">-->
+<!--        <h2>Choose balloon size:</h2>-->
+<!--        <input type="radio" name="size" value="Small"> Small <br/>-->
+<!--        <input type="radio" name="size" value="Medium"> Medium <br/>-->
+<!--        <input type="radio" name="size" value="Big"> Big <br/>-->
+<!--        <input type="radio" name="size" value="Extra Big"> Extra Big <br/>-->
+<!--        <br/>-->
+<!--        <input type="submit" value="Submit">-->
+<!--    </form>-->
+
+<!--    <a href="/deliveryInfo.html">Submit</a>-->
+</section>
+
+
+<aside>
+    <table>
+        <tr>
+            <th colspan="2">
+                Your Order Status
+            </th>
+        </tr>
+        <tr>
+            <td><b>Balloon Color</b></td>
+            <td><th:block th:utext="${#session.getAttribute('color')}"></th:block></td>
+        </tr>
+    </table>
+</aside>
+
+</body>
+</html>
