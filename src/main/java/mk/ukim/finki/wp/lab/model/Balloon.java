@@ -6,7 +6,10 @@ import java.util.Optional;
 @Entity
 @Table(name = "Balloon")
 public class Balloon {
+    @Column(name = "name")
     private String name;
+
+    @Column(name = "description")
     private String description;
 
     @Id
@@ -47,6 +50,7 @@ public class Balloon {
     public Balloon(String name, String description) {
         this.name = name;
         this.description = description;
+        this.id = (long) (Math.random()*1000);
     }
 
     public Balloon(String name, String description, Manufacturer manufacturer, boolean isSize) {

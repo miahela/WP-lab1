@@ -1,6 +1,7 @@
 package mk.ukim.finki.wp.lab.implementations;
 
 import mk.ukim.finki.wp.lab.model.Balloon;
+import mk.ukim.finki.wp.lab.model.Manufacturer;
 import mk.ukim.finki.wp.lab.repository.BalloonRepository;
 import mk.ukim.finki.wp.lab.repository.impl.BalloonRepositoryImpl;
 import mk.ukim.finki.wp.lab.service.BalloonService;
@@ -20,6 +21,11 @@ public class BalloonServiceImpl implements BalloonService {
     @Override
     public List<Balloon> listAll() {
         return balloonRepository.findAllBalloons();
+    }
+
+    @Override
+    public List<Balloon> listSizes() {
+        return balloonRepository.listSizes();
     }
 
     @Override
@@ -51,5 +57,6 @@ public class BalloonServiceImpl implements BalloonService {
     public Balloon editBalloon(Long id, String name, String description, Optional<Manufacturer> manufacturer) {
         return balloonRepository.editBalloon(id, name, description, manufacturer);
     }
+
 }
 

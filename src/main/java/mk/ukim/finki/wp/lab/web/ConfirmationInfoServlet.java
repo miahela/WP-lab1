@@ -28,8 +28,11 @@ public class ConfirmationInfoServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        WebContext context = new WebContext(req, resp, req.getServletContext());
-//        context.setVariable("balloons", this.balloonService.listAll());
+        WebContext context = new WebContext(req,resp,req.getSession().getServletContext());
+        context.setVariable("color", req.getSession().getAttribute(("color")));
+        context.setVariable("size", req.getSession().getAttribute(("size")));
+        context.setVariable("clientName", req.getSession().getAttribute(("clientName")));
+        context.setVariable("clientAddress", req.getSession().getAttribute(("clientAddress")));
         springTemplateEngine.process("confirmationInfo.html", context, resp.getWriter());
     }
 

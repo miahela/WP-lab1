@@ -13,6 +13,11 @@ public class WpLab1Application {
     public WpLab1Application() {
     }
 
+    @Bean
+    PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder(10);
+    }
+
     public static void main(String[] args) {
         SpringApplication.run(WpLab1Application.class, args);
     }
