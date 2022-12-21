@@ -4,6 +4,8 @@ public class Order {
     String balloonColor;
     String balloonSize;
     Long orderId;
+    String clientName;
+    String clientAddress;
 
     public Order(String balloonColor, String balloonSize) {
         this.balloonColor = balloonColor;
@@ -16,6 +18,11 @@ public class Order {
     }
 
     public Order(String attribute, String attribute1, String clientName, String clientAddress) {
+        this.balloonColor = attribute;
+        this.balloonSize = attribute1;
+        this.clientName = clientName;
+        this.clientAddress = clientAddress;
+        this.orderId = (long) (Math.random()*1000);;
     }
 
     public String getBalloonColor() {
@@ -32,6 +39,14 @@ public class Order {
 
     public void setBalloonColor(String balloonColor) {
         this.balloonColor = balloonColor;
+    }
+
+    public String getClientName() {
+        return clientName;
+    }
+
+    public String getClientAddress() {
+        return clientAddress;
     }
 
     public void setBalloonSize(String balloonSize) {

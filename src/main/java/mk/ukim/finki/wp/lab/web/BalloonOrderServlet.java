@@ -4,6 +4,7 @@
 
 package mk.ukim.finki.wp.lab.web;
 
+import mk.ukim.finki.wp.lab.model.Order;
 import mk.ukim.finki.wp.lab.service.BalloonService;
 import org.thymeleaf.context.WebContext;
 import org.thymeleaf.spring5.SpringTemplateEngine;
@@ -16,6 +17,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
 
 @WebServlet(name = "BallonOrder", urlPatterns = "/BalloonOrder")
 public class BalloonOrderServlet extends HttpServlet {
@@ -30,12 +33,9 @@ public class BalloonOrderServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        WebContext context = new WebContext(req,resp,req.getServletContext());
-//        if (req.getSession().getAttribute("color") == null){
-//            springTemplateEngine.process("listBalloons.html", context, resp.getWriter());
-//        }
-
-//        context.setVariable("balloons", this.balloonService.listAll());
+        WebContext context = new WebContext(req,resp,req.getSession().getServletContext());
+        context.setVariable("color", req.getSession().getAttribute(("color")));
+        context.setVariable("size", req.getSession().getAttribute(("size")));
         springTemplateEngine.process("deliveryInfo.html", context, resp.getWriter());
     }
 
@@ -43,8 +43,16 @@ public class BalloonOrderServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.getSession().setAttribute("clientName", req.getParameter("clientName"));
         req.getSession().setAttribute("clientAddress", req.getParameter("clientAddress"));
-//        UserAgent userAgent = UserAgent.parseUserAgentString(request.getHeader("User-Agent"));
-//        System.out.println(userAgent.getBrowser().getName() + " " + userAgent.getBrowserVersion());
+        List<Order> orderArrayList;
+        if(req.getSession().getAttribute("orders") == null) {
+            orderArrayList = new ArrayList<>();
+        } else {
+            orderArrayList = (ArrayList<Order>) req.getSession().getAttribute("orders");
+            System.out.println(orderArrayList);
+        }
+        orderArrayList.add(new Order( (String) req.getSession().getAttribute(("color")),(String) req.getSession().getAttribute(("size")), req.getParameter("clientName"), req.getParameter("clientAddress")));
+        req.getSession().setAttribute("orders", orderArrayList);
+
         resp.sendRedirect("/ConfirmationInfo");
     }
 }

@@ -13,19 +13,19 @@ import java.io.IOException;
 
 @WebServlet(name = "selection", urlPatterns = "/selectBalloon")
 public class SelectBalloonServlet extends HttpServlet {
-    private final BalloonService balloonService;
+    private final BalloonService ballonService;
     private final SpringTemplateEngine springTemplateEngine;
 
-    public SelectBalloonServlet(BalloonService balloonService, SpringTemplateEngine springTemplateEngine) {
-        this.balloonService = balloonService;
+    public SelectBalloonServlet(BalloonService ballonService, SpringTemplateEngine springTemplateEngine) {
+        this.ballonService = ballonService;
         this.springTemplateEngine = springTemplateEngine;
     }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        WebContext context = new WebContext(req,resp,req.getServletContext());
-//        context.setVariable("sizes", balloonService.searchByNameOrDescription((String) req.getSession().getAttribute("color")));
-        context.setVariable("sizes", this.balloonService.getAllSizes());
+        WebContext context = new WebContext(req,resp,req.getSession().getServletContext());
+        context.setVariable("color", req.getSession().getAttribute(("color")));
+        context.setVariable("sizes", this.ballonService.getAllSizes());
         springTemplateEngine.process("selectBalloonSize.html", context, resp.getWriter());
     }
 
