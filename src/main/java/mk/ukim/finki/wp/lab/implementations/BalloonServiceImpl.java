@@ -1,6 +1,7 @@
 package mk.ukim.finki.wp.lab.implementations;
 
 import mk.ukim.finki.wp.lab.model.Balloon;
+import mk.ukim.finki.wp.lab.model.Manufacturer;
 import mk.ukim.finki.wp.lab.repository.BalloonRepository;
 import mk.ukim.finki.wp.lab.service.BalloonService;
 import org.springframework.stereotype.Service;
@@ -50,5 +51,6 @@ public class BalloonServiceImpl implements BalloonService {
     public Balloon editBalloon(Long id, String name, String description, Manufacturer manufacturer) {
         return balloonRepository.editBalloon(id, name, description, manufacturer);
     }
+
 }
 

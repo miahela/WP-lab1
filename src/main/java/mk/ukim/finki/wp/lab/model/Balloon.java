@@ -37,4 +37,16 @@ public class Balloon {
 
     public Balloon() {
     }
+
+    public Long getId() {
+        return id;
+    }
+
+    public Manufacturer getManufacturer() {
+        return manufacturer;
+    }
+
+    public void setManufacturer(Manufacturer manufacturer) {
+        this.manufacturer = manufacturer;
+    }
 }

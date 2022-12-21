@@ -1,19 +1,45 @@
 package mk.ukim.finki.wp.lab.model;
 
 public class Order {
-    private String balloonColor;
-    private String balloonSize;
-    private String clientName;
-    private String clientAddress;
-    private Long orderId;
+    String balloonColor;
+    String balloonSize;
+    Long orderId;
 
-    public Order(String balloonColor, String balloonSize, String clientName, String clientAddress, Long orderId) {
+    public Order(String balloonColor, String balloonSize) {
         this.balloonColor = balloonColor;
         this.balloonSize = balloonSize;
-        this.clientName = clientName;
-        this.clientAddress = clientAddress;
-        this.orderId = orderId;
+        this.orderId = (long) (Math.random()*1000);;
     }
 
-    public Order() {}
+    public Order() {
+
+    }
+
+    public Order(String attribute, String attribute1, String clientName, String clientAddress) {
+    }
+
+    public String getBalloonColor() {
+        return balloonColor;
+    }
+
+    public String getBalloonSize() {
+        return balloonSize;
+    }
+
+    public Long getOrderId() {
+        return orderId;
+    }
+
+    public void setBalloonColor(String balloonColor) {
+        this.balloonColor = balloonColor;
+    }
+
+    public void setBalloonSize(String balloonSize) {
+        this.balloonSize = balloonSize;
+    }
+
+    public void setOrderId(Long orderId) {
+        this.orderId = orderId;
+    }
 }
+

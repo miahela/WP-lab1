@@ -25,7 +25,7 @@ public class SelectBalloonServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         WebContext context = new WebContext(req,resp,req.getServletContext());
 //        context.setVariable("sizes", balloonService.searchByNameOrDescription((String) req.getSession().getAttribute("color")));
-        context.setVariable("sizes", this.balloonService.listSizes());
+        context.setVariable("sizes", this.balloonService.getAllSizes());
         springTemplateEngine.process("selectBalloonSize.html", context, resp.getWriter());
     }
 

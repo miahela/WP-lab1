@@ -1,8 +1,11 @@
 package mk.ukim.finki.wp.lab.repository;
 
 import mk.ukim.finki.wp.lab.bootstrap.DataHolder;
+import mk.ukim.finki.wp.lab.exceptions.BalloonAlreadyExists;
 import mk.ukim.finki.wp.lab.exceptions.BalloonDoesntExistException;
+import mk.ukim.finki.wp.lab.exceptions.ManufacturerDoesntExist;
 import mk.ukim.finki.wp.lab.model.Balloon;
+import mk.ukim.finki.wp.lab.model.Manufacturer;
 import mk.ukim.finki.wp.lab.service.BalloonService;
 import org.springframework.stereotype.Repository;
 
