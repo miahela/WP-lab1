@@ -52,7 +52,10 @@
         <input type="submit" class="btn btn-success" value="Submit">
     </form>
 
-    <a class="btn btn-outline-success" th:href="@{'/balloons/add'}">Add a new ballon</a>
+        <th:block sec:authorize="hasRole('ROLE_ADMIN')">
+            <a class="btn btn-outline-success" th:href="@{'/balloons/add'}">Add a new ballon</a>
+        </th:block>
+
 
     <!--    <h2>Choose balloon color:</h2>-->
     <!--    <input type="radio" name="color" value="Red Balloon"> Red Balloon<br/>-->

@@ -45,7 +45,7 @@ public class WebSecurityConfig {
                 .clearAuthentication(true)
                 .invalidateHttpSession(true)
                 .deleteCookies("JSESSIONID")
-                .logoutSuccessUrl("/login")
+                .logoutSuccessUrl("/balloons/login")
                 .and()
                 .exceptionHandling().accessDeniedPage("/access_denied");
 
