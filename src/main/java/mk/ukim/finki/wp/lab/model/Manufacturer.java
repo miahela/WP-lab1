@@ -1,9 +1,21 @@
 package mk.ukim.finki.wp.lab.model;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "Manufacturer")
 public class Manufacturer {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+
+    @Column(name = "name")
     private String name;
+
+    @Column(name = "country")
     private String country;
+
+    @Column(name = "address")
     private String address;
 
     public Manufacturer(String name, String country, String address) {
@@ -11,6 +23,10 @@ public class Manufacturer {
         this.name = name;
         this.country = country;
         this.address = address;
+    }
+
+    public Manufacturer() {
+
     }
 
     public Long getId() {

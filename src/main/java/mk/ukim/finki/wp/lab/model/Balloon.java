@@ -1,9 +1,22 @@
 package mk.ukim.finki.wp.lab.model;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "Balloon")
 public class Balloon {
+    @Column(name = "name")
     private String name;
+
+    @Column(name = "description")
     private String description;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+
+    @OneToOne
+    @JoinColumn(name = "manufacturerId")
     private Manufacturer manufacturer;
 
     public String getName() {

@@ -50,7 +50,7 @@ public class BalloonOrderServlet extends HttpServlet {
             orderArrayList = (ArrayList<Order>) req.getSession().getAttribute("orders");
             System.out.println(orderArrayList);
         }
-        orderArrayList.add(new Order( (String) req.getSession().getAttribute(("color")),(String) req.getSession().getAttribute(("size")), req.getParameter("clientName"), req.getParameter("clientAddress")));
+        orderArrayList.add(new Order( (String) req.getSession().getAttribute(("color")),(String) req.getSession().getAttribute(("size"))));
         req.getSession().setAttribute("orders", orderArrayList);
 
         resp.sendRedirect("/ConfirmationInfo");
