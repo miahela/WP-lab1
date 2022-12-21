@@ -23,6 +23,11 @@ public class BalloonServiceImpl implements BalloonService {
     }
 
     @Override
+    public List<Balloon> listSizes() {
+        return balloonRepository.listSizes();
+    }
+
+    @Override
     public List<Balloon> getAllSizes() {
         return balloonRepository.getAllSizes();
     }
