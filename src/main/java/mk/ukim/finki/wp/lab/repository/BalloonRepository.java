@@ -13,6 +13,6 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-public interface BalloonRepository extends JpaRepository<Balloon, Long>, BalloonRepositoryCustom {
+public interface BalloonRepository extends JpaRepository<Balloon, Long> {
 
 }

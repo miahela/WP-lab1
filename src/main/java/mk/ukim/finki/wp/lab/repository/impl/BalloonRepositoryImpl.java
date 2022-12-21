@@ -6,19 +6,16 @@ import mk.ukim.finki.wp.lab.exceptions.ManufacturerDoesntExist;
 import mk.ukim.finki.wp.lab.model.Balloon;
 import mk.ukim.finki.wp.lab.model.Manufacturer;
 import mk.ukim.finki.wp.lab.repository.BalloonRepository;
-import mk.ukim.finki.wp.lab.repository.BalloonRepositoryCustom;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 @Component
-public class BalloonRepositoryImpl implements BalloonRepositoryCustom {
+public class BalloonRepositoryImpl {
 
     private final BalloonRepository balloonRepository;
 
