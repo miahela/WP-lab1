@@ -24,7 +24,7 @@
         <table>
             <div th:each="order: ${#session.getAttribute('orders')}">
                 <!--/*@thymesVar id="order" type="mk.ukim.finki.wp.lab.model.Order"*/-->
-                <th:span th:utext="${order.getOrderId() + ' : ' + order.getClientName() + ',  ' + order.getClientAddress() + ', ' + order.getBalloonColor() + ', ' + order.getBalloonSize()}"></th:span>
+                <th:span th:utext="${order.getOrderId() + ' : ' + order.getClientName() + ',  ' + order.getClientAddress() + ', ' + order.getBalloonColor() + ', ' + order.getBalloonSize() + ', ' + order.getDateCreated()}"></th:span>
             </div>
         </table>
 

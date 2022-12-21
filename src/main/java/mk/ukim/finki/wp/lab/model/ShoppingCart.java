@@ -1,5 +1,7 @@
 package mk.ukim.finki.wp.lab.model;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -16,6 +18,7 @@ public class ShoppingCart {
     private User userId;
 
     @Column(name = "dateCreated")
+    @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
     private LocalDateTime dateCreated;
 
     @OneToMany(mappedBy = "shoppingCartId")

@@ -17,6 +17,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,6 +26,7 @@ public class BalloonOrderServlet extends HttpServlet {
 
     private final BalloonService balloonService;
     private final SpringTemplateEngine springTemplateEngine;
+    private LocalDateTime dateCreated;
 
     public BalloonOrderServlet(BalloonService balloonService, SpringTemplateEngine springTemplateEngine) {
         this.balloonService = balloonService;
@@ -50,7 +52,15 @@ public class BalloonOrderServlet extends HttpServlet {
             orderArrayList = (ArrayList<Order>) req.getSession().getAttribute("orders");
             System.out.println(orderArrayList);
         }
-        orderArrayList.add(new Order( (String) req.getSession().getAttribute(("color")),(String) req.getSession().getAttribute(("size"))));
+
+        String dateCreatedString = req.getParameter("dateCreated");
+        if (dateCreatedString == null || dateCreatedString.isEmpty()) {
+            dateCreated = LocalDateTime.now();
+        } else {
+            dateCreated = LocalDateTime.parse(dateCreatedString);
+        }
+
+        orderArrayList.add(new Order( (String) req.getSession().getAttribute(("color")),(String) req.getSession().getAttribute(("size")), dateCreated ));
         req.getSession().setAttribute("orders", orderArrayList);
 
         resp.sendRedirect("/ConfirmationInfo");
