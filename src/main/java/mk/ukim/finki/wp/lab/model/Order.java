@@ -15,5 +15,5 @@ public class Order {
         this.orderId = orderId;
     }
 
-    public Order() {}
+
 }

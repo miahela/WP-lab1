@@ -2,6 +2,7 @@ package mk.ukim.finki.wp.lab.implementations;
 
 import mk.ukim.finki.wp.lab.model.Balloon;
 import mk.ukim.finki.wp.lab.repository.BalloonRepository;
+import mk.ukim.finki.wp.lab.repository.impl.BalloonRepositoryImpl;
 import mk.ukim.finki.wp.lab.service.BalloonService;
 import org.springframework.stereotype.Service;
 
@@ -10,9 +11,9 @@ import java.util.Optional;
 
 @Service
 public class BalloonServiceImpl implements BalloonService {
-    public BalloonRepository balloonRepository;
+    public BalloonRepositoryImpl balloonRepository;
 
-    public BalloonServiceImpl(BalloonRepository balloonRepository) {
+    public BalloonServiceImpl(BalloonRepositoryImpl balloonRepository) {
         this.balloonRepository = balloonRepository;
     }
 
@@ -42,12 +43,12 @@ public class BalloonServiceImpl implements BalloonService {
     }
 
     @Override
-    public Balloon addNewBalloon(String name, String description, Manufacturer manufacturer) {
-        return balloonRepository.addBalloon(new Balloon(name, description, manufacturer));
+    public Balloon addNewBalloon(String name, String description, Optional<Manufacturer> manufacturer) {
+        return balloonRepository.addBalloon(new Balloon(name, description, manufacturer, false));
     }
 
     @Override
-    public Balloon editBalloon(Long id, String name, String description, Manufacturer manufacturer) {
+    public Balloon editBalloon(Long id, String name, String description, Optional<Manufacturer> manufacturer) {
         return balloonRepository.editBalloon(id, name, description, manufacturer);
     }
 }

@@ -12,7 +12,9 @@ public interface BalloonService {
     List<Balloon> getAllSizes();
     List<Balloon> searchByNameOrDescription(String text);
     Optional<Balloon> searchById(Long id);
-    Balloon editBalloon(Long id, String name, String description, Manufacturer manufacturer);
+    Balloon editBalloon(Long id, String name, String description, Optional<Manufacturer> manufacturer);
+
+    List<Balloon> listSizes();
     void deleteById(Long id);
-    Balloon addNewBalloon(String name, String description, Manufacturer manufacturer);
+    Balloon addNewBalloon(String name, String description, Optional<Manufacturer> manufacturer);
 }

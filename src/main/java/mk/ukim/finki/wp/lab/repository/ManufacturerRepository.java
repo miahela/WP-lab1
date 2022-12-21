@@ -1,7 +1,5 @@
 package mk.ukim.finki.wp.lab.repository;
 
-import mk.ukim.finki.wp.lab.exceptions.BalloonAlreadyExists;
-import mk.ukim.finki.wp.lab.exceptions.BalloonDoesntExistException;
 import mk.ukim.finki.wp.lab.model.Balloon;
 import mk.ukim.finki.wp.lab.model.Manufacturer;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -11,9 +9,8 @@ import javax.annotation.PostConstruct;
 import javax.xml.crypto.Data;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Repository
-public interface BalloonRepository extends JpaRepository<Balloon, Long>, BalloonRepositoryCustom {
+public interface ManufacturerRepository extends JpaRepository<Manufacturer, Long> {
 
 }
