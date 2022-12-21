@@ -27,7 +27,7 @@ public class WebSecurityConfig {
 
     @Bean
     public SecurityFilterChain filterChain (HttpSecurity http) throws Exception {
-        http.headers().disable();
+        http.headers().contentTypeOptions().disable();
         http.csrf().disable()
                 .authorizeRequests()
                 .antMatchers("/", "/home", "/assets/**", "/register").permitAll()
@@ -36,7 +36,7 @@ public class WebSecurityConfig {
                 .authenticated()
                 .and()
                 .formLogin()
-                .loginPage("/login").permitAll()
+                .loginPage("/balloons/login").permitAll()
                 .failureUrl("/login?error=BadCredentials")
                 .defaultSuccessUrl("/balloons", true)
                 .and()
