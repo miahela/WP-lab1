@@ -14,6 +14,8 @@ public interface BalloonService {
     List<Balloon> searchByNameOrDescription(String text);
     Optional<Balloon> searchById(Long id);
     Balloon editBalloon(Long id, String name, String description, Manufacturer manufacturer);
+
+    List<Balloon> listSizes();
     void deleteById(Long id);
     Balloon addNewBalloon(String name, String description, Manufacturer manufacturer);
 }

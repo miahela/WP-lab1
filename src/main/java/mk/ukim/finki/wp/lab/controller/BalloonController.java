@@ -13,11 +13,11 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/balloons")
-public class BallonController {
+public class BalloonController {
     private final BalloonService balloonService;
     private final ManufacturerService manufacturerService;
 
-    public BallonController(BalloonService balloonService, ManufacturerService manufacturerService) {
+    public BalloonController(BalloonService balloonService, ManufacturerService manufacturerService) {
         this.balloonService = balloonService;
         this.manufacturerService = manufacturerService;
     }
