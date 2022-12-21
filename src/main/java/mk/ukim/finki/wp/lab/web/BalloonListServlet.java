@@ -36,4 +36,4 @@ public class BalloonListServlet extends HttpServlet {
         req.getSession().setAttribute("color", req.getParameter("color"));
         resp.sendRedirect("/selectBalloon");
     }
-    }
+}

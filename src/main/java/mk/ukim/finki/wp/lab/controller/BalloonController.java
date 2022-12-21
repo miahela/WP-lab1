@@ -30,6 +30,7 @@ public class BalloonController {
         if(error != null){
             model.addAttribute("hasError", true);
             model.addAttribute("error",error);
+            return "redirect:/login";
         }
 
         return "listBalloons";
@@ -97,6 +98,16 @@ public class BalloonController {
         req.getSession().setAttribute("color", color);
 
         return "redirect:/selectBalloon";
+    }
+
+    @GetMapping("/login")
+    public String getLoginPage(@RequestParam(required = false) String error, Model model) {
+        model.addAttribute("hasError",false);
+        if(error != null){
+            model.addAttribute("hasError", true);
+            model.addAttribute("error",error);
+        }
+        return "login";
     }
 
     @GetMapping("/access_denied")
