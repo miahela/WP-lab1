@@ -1,6 +1,8 @@
 package mk.ukim.finki.wp.lab.web;
 
 import mk.ukim.finki.wp.lab.service.BalloonService;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.thymeleaf.context.WebContext;
 import org.thymeleaf.spring5.SpringTemplateEngine;
 
@@ -34,4 +36,4 @@ public class BalloonListServlet extends HttpServlet {
         req.getSession().setAttribute("color", req.getParameter("color"));
         resp.sendRedirect("/selectBalloon");
     }
-}
+    }

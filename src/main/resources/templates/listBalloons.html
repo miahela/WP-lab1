@@ -1,4 +1,4 @@
-<html>
+<html xmlns:sec="">
 <head>
     <meta charset="utf-8">
     <title>Balloon Order page - Welcome and choose a Balloon</title>
@@ -29,14 +29,20 @@
     <h1>Welcome to our Balloon Shop App</h1>
 </header>
 <main>
-    <form th:action="@{/}", method="POST">
+    <td class="text-right">
+        <th:block sec:authorize="hasRole('ROLE_ADMIN')">
+
+        <form th:action="@{/}", method="POST">
         <h2>Choose balloon color:</h2>
         <!--/*@thymesVar id="balloons" type="mk.ukim.finki.wp.lab.model.Balloon"*/-->
         <div th:each="balloon: ${balloons}"><!--/*@thymesVar id="balloon" type="mk.ukim.finki.wp.lab.model.Balloon"*/-->
             <input type="radio" name="color"  th:value="${balloon.getName()}"  />
             <th:span th:text="${balloon.getDescription() + '   ->   ' + balloon.getManufacturer().getName()}"></th:span>
+
+            <th:block sec:authorize="hasRole('ROLE_ADMIN')">
             <a class="btn btn-outline-danger btn-sm" th:href="@{'/balloons/delete/{id}' (id=${balloon.getId()})}">Delete</a>
             <a class="btn btn-outline-warning btn-sm" th:href="@{'/balloons/edit-form/{id}' (id=${balloon.getId()})}">Edit</a>
+            </th:block>
         </div>
         <br/>
         <input type="submit" class="btn btn-success" value="Submit">

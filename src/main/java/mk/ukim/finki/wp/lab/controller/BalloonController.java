@@ -4,6 +4,7 @@ import mk.ukim.finki.wp.lab.exceptions.BalloonDoesntExistException;
 import mk.ukim.finki.wp.lab.model.Order;
 import mk.ukim.finki.wp.lab.service.BalloonService;
 import mk.ukim.finki.wp.lab.service.ManufacturerService;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -44,6 +45,7 @@ public class BalloonController {
     }
 
     @GetMapping("/add")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public String saveBalloon(Model model) {
         model.addAttribute("manufacturers", manufacturerService.findAll());
         model.addAttribute("type","add");
@@ -51,12 +53,14 @@ public class BalloonController {
     }
 
     @GetMapping("/delete/{id}")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public String deleteBalloon(@PathVariable Long id) {
         balloonService.deleteById(id);
         return "redirect:/balloons";
     }
 
     @GetMapping("/edit-form/{id}")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public String getEditBalloonPage(@PathVariable Long id, Model model){
 
         try{
@@ -70,6 +74,7 @@ public class BalloonController {
     }
 
     @PostMapping("/add")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public String saveCourse(@RequestParam(required = false) Long balloonId, @RequestParam Long manufacturerId,@RequestParam String balloonName, @RequestParam String balloonDescription) {
 
         try{
@@ -86,11 +91,18 @@ public class BalloonController {
     }
 
     @PostMapping
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public String addColor(@RequestParam String color, HttpServletRequest req) {
 
         req.getSession().setAttribute("color", color);
 
         return "redirect:/selectBalloon";
+    }
+
+    @GetMapping("/access_denied")
+    public String getAccessDeniedPage(Model model) {
+        model.addAttribute("bodyContent","access_denied");
+        return "master-template";
     }
 
 }
