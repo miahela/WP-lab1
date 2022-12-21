@@ -28,6 +28,7 @@ public class BalloonController {
         model.addAttribute("balloons", balloonService.listAll());
         model.addAttribute("hasError",false);
         if(error != null){
+            System.out.println(error);
             model.addAttribute("hasError", true);
             model.addAttribute("error",error);
             return "redirect:/login";
@@ -115,5 +116,4 @@ public class BalloonController {
         model.addAttribute("bodyContent","access_denied");
         return "master-template";
     }
-
 }

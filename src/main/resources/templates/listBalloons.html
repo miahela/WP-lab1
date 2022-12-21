@@ -1,5 +1,9 @@
 <html xmlns:sec="">
 <head>
+    <http>
+        ...
+        <headers disabled="true"/>
+    </http>
     <meta charset="utf-8">
     <title>Balloon Order page - Welcome and choose a Balloon</title>
 
@@ -30,7 +34,7 @@
 </header>
 <main>
     <td class="text-right">
-        <th:block sec:authorize="hasRole('ROLE_ADMIN')">
+
 
         <form th:action="@{/}", method="POST">
         <h2>Choose balloon color:</h2>
@@ -40,8 +44,8 @@
             <th:span th:text="${balloon.getDescription() + '   ->   ' + balloon.getManufacturer().getName()}"></th:span>
 
             <th:block sec:authorize="hasRole('ROLE_ADMIN')">
-            <a class="btn btn-outline-danger btn-sm" th:href="@{'/balloons/delete/{id}' (id=${balloon.getId()})}">Delete</a>
-            <a class="btn btn-outline-warning btn-sm" th:href="@{'/balloons/edit-form/{id}' (id=${balloon.getId()})}">Edit</a>
+                <a class="btn btn-outline-danger btn-sm" th:href="@{'/balloons/delete/{id}' (id=${balloon.getId()})}">Delete</a>
+                <a class="btn btn-outline-warning btn-sm" th:href="@{'/balloons/edit-form/{id}' (id=${balloon.getId()})}">Edit</a>
             </th:block>
         </div>
         <br/>

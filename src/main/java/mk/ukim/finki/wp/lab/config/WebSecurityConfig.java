@@ -17,7 +17,7 @@ import org.springframework.security.web.SecurityFilterChain;
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(securedEnabled = true, prePostEnabled = true)
-public class WebSecurityConfig  {
+public class WebSecurityConfig {
 
     private final PasswordEncoder passwordEncoder;
 
@@ -27,7 +27,7 @@ public class WebSecurityConfig  {
 
     @Bean
     public SecurityFilterChain filterChain (HttpSecurity http) throws Exception {
-
+        http.headers().disable();
         http.csrf().disable()
                 .authorizeRequests()
                 .antMatchers("/", "/home", "/assets/**", "/register").permitAll()
